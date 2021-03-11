@@ -16,5 +16,7 @@ namespace MIS4200_Team8.DAL
 
         public DbSet<Employees> employees { get; set; }
 
+        public DbSet<Profile> profile { get; set; }
+
     }
 }
