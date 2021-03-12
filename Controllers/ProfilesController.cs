@@ -66,6 +66,7 @@ namespace MIS4200_Team8.Controllers
         }
 
         // GET: Profiles/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
