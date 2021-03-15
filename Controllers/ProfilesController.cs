@@ -78,7 +78,17 @@ namespace MIS4200_Team8.Controllers
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            Guid profileID;
+            Guid.TryParse(User.Identity.GetUserId(), out profileID);
+            if (profileID == id)
+            {
+                return View(profile);
+            }
+            else
+            {
+                return View("notAuthorized");
+            }
+            
         }
 
         // POST: Profiles/Edit/5
