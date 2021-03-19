@@ -108,6 +108,7 @@ namespace MIS4200_Team8.Controllers
         }
 
         // GET: Profiles/Delete/5
+        
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -122,7 +123,7 @@ namespace MIS4200_Team8.Controllers
             return View(profile);
         }
 
-        // POST: Profiles/Delete/5
+        // POST: Profiles/Delete/5        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
