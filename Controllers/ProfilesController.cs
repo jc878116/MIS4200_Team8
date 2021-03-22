@@ -108,9 +108,12 @@ namespace MIS4200_Team8.Controllers
         }
 
         // GET: Profiles/Delete/5
-        
+
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -120,7 +123,17 @@ namespace MIS4200_Team8.Controllers
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            Guid profileID;
+            Guid.TryParse(User.Identity.GetUserId(), out profileID);
+            if (profileID == id)
+            {
+                return View(profile);
+            }
+            else
+            {
+                return View("notAuthorized");
+            }
+
         }
 
         // POST: Profiles/Delete/5        
