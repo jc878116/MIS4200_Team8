@@ -172,7 +172,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewProfilesController.cs" />
-    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="DAL\CentricContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -247,17 +246,12 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Profiles\Create.cshtml" />
-    <Content Include="Views\Profiles\Delete.cshtml" />
-    <Content Include="Views\Profiles\Details.cshtml" />
-    <Content Include="Views\Profiles\Edit.cshtml" />
-    <Content Include="Views\Profiles\Index.cshtml" />
-    <Content Include="Views\Profiles\notAuthorized.cshtml" />
     <Content Include="Views\NewProfiles\Create.cshtml" />
     <Content Include="Views\NewProfiles\Delete.cshtml" />
     <Content Include="Views\NewProfiles\Details.cshtml" />
     <Content Include="Views\NewProfiles\Edit.cshtml" />
     <Content Include="Views\NewProfiles\Index.cshtml" />
+    <Content Include="Views\NewProfiles\notAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

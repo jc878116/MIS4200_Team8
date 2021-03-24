@@ -1,10 +1,10 @@
 ﻿@model MIS4200_Team8.Models.Profile
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Employee";
 }
 
-<h2>Delete</h2>
+<h2>Delete Employee Data</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.firstName)
+            First Name
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.lastName)
+            Last Name
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.businessUnit)
+            Business Unit
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.hireDate)
+            Hire Date
         </dt>
 
         <dd>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.jobTitleName)
+            Job Title
         </dt>
 
         <dd>
@@ -59,6 +59,9 @@
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> The action of deleting your account is irreversible.
+        </div>
         </div>
     }
 </div>
