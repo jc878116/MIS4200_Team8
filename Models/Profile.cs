@@ -19,7 +19,20 @@ namespace MIS4200_Team8.Models
         }
         public string businessUnit { get; set; }
         public DateTime hireDate { get; set; }
-        public string jobTitle { get; set; }
+
+        public jobTitle jobTitleName { get; set; }
+        public enum jobTitle
+        {
+                Consultant=1,
+                SeniorConsultant=2,
+                Manager=3,
+                SeniorManager=4,
+                Partner=5,
+                VP=6,
+                CSuite=7
+        }
+
+
 
     }
 }
