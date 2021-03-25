@@ -17,8 +17,25 @@ namespace MIS4200_Team8.Models
                 return lastName + ", " + firstName;
             }
         }
-        public string businessUnit { get; set; }
-        public DateTime hireDate { get; set; }
+        public businessUnit businessUnitLocation { get; set; }
+        public enum businessUnit
+        {
+                Boston=1,
+                Charlotte=2,
+                Chicago=3,
+                Cincinnati=4,
+                Cleveland=5,
+                Columbus=6,
+                India=7,
+                Indianapolis=8,
+                Louisville=9,
+                Miami=10,
+                Seattle=11,
+                StLouis=12,
+                Tampa=13
+        }
+
+        public DateTime hireDate { get; set; }        
 
         public jobTitle jobTitleName { get; set; }
         public enum jobTitle
@@ -32,7 +49,7 @@ namespace MIS4200_Team8.Models
                 CSuite=7
         }
 
-
+        public ICollection<Recognition> recognition { get; set; }
 
     }
 }

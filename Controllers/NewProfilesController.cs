@@ -49,7 +49,7 @@ namespace MIS4200_Team8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "profileID,firstName,lastName,businessUnit,hireDate,jobTitleName")] Profile profile)
+        public ActionResult Create([Bind(Include = "profileID,firstName,lastName,businessUnitLocation,hireDate,jobTitleName")] Profile profile)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace MIS4200_Team8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "profileID,firstName,lastName,businessUnit,hireDate,jobTitleName")] Profile profile)
+        public ActionResult Edit([Bind(Include = "profileID,firstName,lastName,businessUnitLocation,hireDate,jobTitleName")] Profile profile)
         {
             if (ModelState.IsValid)
             {
