@@ -17,6 +17,7 @@ namespace MIS4200_Team8.Controllers
         private CentricContext db = new CentricContext();
 
         // GET: NewProfiles
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.profile.ToList());

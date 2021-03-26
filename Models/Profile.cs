@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,13 @@ namespace MIS4200_Team8.Models
     public class Profile
     {
         public Guid profileID { get; set; }
+
+        [Required(ErrorMessage = "An employee first name is required")]
+        [RegularExpression("^([a-zA-Z']+)$", ErrorMessage = "Employee first name may only include letters and an optional '")]
         public string firstName { get; set; }
+
+        [Required(ErrorMessage = "An employee last name is required")]
+        [RegularExpression("^([a-zA-Z']+)$", ErrorMessage = "Employee last name may only include letters and an optional '")]
         public string lastName { get; set; }
         public string fullName
         {
@@ -17,9 +24,12 @@ namespace MIS4200_Team8.Models
                 return lastName + ", " + firstName;
             }
         }
+
+        [Required(ErrorMessage = "Please select a business unit from the dropdown")]
         public businessUnit businessUnitLocation { get; set; }
         public enum businessUnit
         {
+
                 Boston=1,
                 Charlotte=2,
                 Chicago=3,
@@ -35,8 +45,11 @@ namespace MIS4200_Team8.Models
                 Tampa=13
         }
 
-        public DateTime hireDate { get; set; }        
+        [Required(ErrorMessage = "A hire date is required")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime hireDate { get; set; }
 
+        [Required(ErrorMessage = "Please select a job title from the dropdown")]
         public jobTitle jobTitleName { get; set; }
         public enum jobTitle
         {
