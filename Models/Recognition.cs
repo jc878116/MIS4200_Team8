@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,15 +12,16 @@ namespace MIS4200_Team8.Models
         public int recognitionID { get; set; }
 
         [Display(Name="Core value recognized")]
+        [Range(1, 7, ErrorMessage = "Please select a core value from the dropdown")]
         public CoreValue award { get; set; }
 
         //Prefill to logged in employee
         [Display(Name = "Employee giving the recognition")]
-        public string recognizor { get; set; }
+        public Guid recognizor { get; set; }
 
         //Dropdown list of all registered employees
         [Display(Name = "Employee receiving the recognition")]
-        public string recognized { get; set; }
+        public Guid recognized { get; set; }
 
         [Display(Name = "Date recognition given")]
         public DateTime recognitionDate { get; set; }
@@ -37,9 +39,11 @@ namespace MIS4200_Team8.Models
             IntegrityAndOpenness=6,
             Stewardship=7
         }
+               
+        [ForeignKey("recognizor")]
+        public virtual Profile employeeGiving { get; set; }
 
-        public int profileID { get; set; }
-
-        public virtual Profile profile { get; set; }
+        [ForeignKey("recognized")]
+        public virtual Profile employeeGetting { get; set; }
     }
 }

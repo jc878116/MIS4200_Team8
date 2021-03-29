@@ -25,11 +25,12 @@ namespace MIS4200_Team8.Models
             }
         }
 
-        [Required(ErrorMessage = "Please select a business unit from the dropdown")]
+        
+        [Range(1,13, ErrorMessage = "Please select a business unit from the dropdown")]
         public businessUnit businessUnitLocation { get; set; }
+        
         public enum businessUnit
-        {
-
+        {              
                 Boston=1,
                 Charlotte=2,
                 Chicago=3,
@@ -49,7 +50,8 @@ namespace MIS4200_Team8.Models
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }
 
-        [Required(ErrorMessage = "Please select a job title from the dropdown")]
+        
+        [Range(1, 7, ErrorMessage = "Please select a job title from the dropdown")]
         public jobTitle jobTitleName { get; set; }
         public enum jobTitle
         {

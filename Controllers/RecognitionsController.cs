@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200_Team8.DAL;
 using MIS4200_Team8.Models;
 
@@ -52,6 +53,9 @@ namespace MIS4200_Team8.Controllers
         {
             if (ModelState.IsValid)
             {
+                Guid newProfileID;
+                Guid.TryParse(User.Identity.GetUserId(), out newProfileID);
+                recognition.recognizor = newProfileID;
                 db.recognition.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
