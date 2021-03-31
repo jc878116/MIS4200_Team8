@@ -49,7 +49,7 @@ namespace MIS4200_Team8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,profileID")] Recognition recognition)
+        public ActionResult Create([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,description")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +61,7 @@ namespace MIS4200_Team8.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.profileID = new SelectList(db.profile, "profileID", "fullName");
             return View(recognition);
         }
 
@@ -84,7 +85,7 @@ namespace MIS4200_Team8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,profileID")] Recognition recognition)
+        public ActionResult Edit([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,description")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {

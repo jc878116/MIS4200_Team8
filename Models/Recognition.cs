@@ -26,8 +26,8 @@ namespace MIS4200_Team8.Models
         [Display(Name = "Date recognition given")]
         public DateTime recognitionDate { get; set; }
 
-        //Text field for a little description
-        //public string descritption { get; set; }
+        [Display(Name = "Describe how this employee exemplified this core value")]
+        public string descritption { get; set; }
 
         public enum CoreValue
         {
