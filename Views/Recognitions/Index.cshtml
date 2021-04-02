@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.award)
@@ -35,10 +35,10 @@
         @Html.DisplayFor(modelItem => item.award)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.recognizor)
+        @Html.DisplayFor(modelItem => item.employeeGiving.fullName)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.recognized)
+        @Html.DisplayFor(modelItem => item.employeeGetting.fullName)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.recognitionDate)

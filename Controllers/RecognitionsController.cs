@@ -41,7 +41,9 @@ namespace MIS4200_Team8.Controllers
         // GET: Recognitions/Create
         public ActionResult Create()
         {
+            ViewBag.recognized = new SelectList(db.profile, "profileID", "fullName");
             return View();
+
         }
 
         // POST: Recognitions/Create
@@ -61,12 +63,13 @@ namespace MIS4200_Team8.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.profileID = new SelectList(db.profile, "profileID", "fullName");
+            ViewBag.recognized = new SelectList(db.profile, "profileID", "fullName");
             return View(recognition);
         }
 
         // GET: Recognitions/Edit/5
-        public ActionResult Edit(int? id)
+        [Authorize]
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -77,7 +80,17 @@ namespace MIS4200_Team8.Controllers
             {
                 return HttpNotFound();
             }
-            return View(recognition);
+            Guid recognitionID;
+            Guid.TryParse(User.Identity.GetUserId(), out recognitionID);
+            if (recognitionID == id)
+            {
+                return View(recognition);
+            }
+            else
+            {
+                return View("notAuthorizedRecognition");
+            }
+
         }
 
         // POST: Recognitions/Edit/5
