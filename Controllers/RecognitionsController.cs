@@ -20,7 +20,7 @@ namespace MIS4200_Team8.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.recognition.ToList());
+            return View(db.recognition.OrderByDescending(r=>r.recognitionDate).ToList());
         }
 
         // GET: Recognitions/Details/5
@@ -51,7 +51,7 @@ namespace MIS4200_Team8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,description")] Recognition recognition)
+        public ActionResult Create([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,descritption")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace MIS4200_Team8.Controllers
 
         // GET: Recognitions/Edit/5
         [Authorize]
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -82,7 +82,7 @@ namespace MIS4200_Team8.Controllers
             }
             Guid recognitionID;
             Guid.TryParse(User.Identity.GetUserId(), out recognitionID);
-            if (recognitionID == id)
+            if (recognitionID == recognition.recognizor)
             {
                 return View(recognition);
             }
@@ -98,7 +98,7 @@ namespace MIS4200_Team8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,description")] Recognition recognition)
+        public ActionResult Edit([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,descritption")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {

@@ -24,6 +24,8 @@ namespace MIS4200_Team8.Models
         public Guid recognized { get; set; }
 
         [Display(Name = "Date recognition given")]
+        [Required(ErrorMessage = "A recognition date is required")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime recognitionDate { get; set; }
 
         [Display(Name = "Describe how this employee exemplified this core value")]
