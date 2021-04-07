@@ -18,8 +18,13 @@ namespace MIS4200_Team8.Controllers
 
         // GET: Recognitions
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var employeeSearch = from p in db.profile select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString)); /*|| p.firstName.Contains(searchString);*/
+            }
             return View(db.recognition.OrderByDescending(r=>r.recognitionDate).ToList());
         }
 

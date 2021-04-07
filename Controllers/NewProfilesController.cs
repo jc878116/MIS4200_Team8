@@ -18,9 +18,14 @@ namespace MIS4200_Team8.Controllers
 
         // GET: NewProfiles
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.profile.ToList());
+            var employeeSearch = from p in db.profile select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString)); /*|| p.firstName.Contains(searchString);*/
+            }
+            return View(employeeSearch.ToList());
         }
 
         // GET: NewProfiles/Details/5

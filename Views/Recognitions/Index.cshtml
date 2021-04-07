@@ -6,6 +6,15 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("Index", "NewProfiles", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -29,29 +38,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.award)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.employeeGiving.fullName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.employeeGetting.fullName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.recognitionDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.descritption)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.recognitionID }) 
-        @*@Html.ActionLink("Details", "Details", new { id = item.recognitionID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.recognitionID })*@
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.award)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeGiving.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeGetting.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognitionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descritption)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.recognitionID })
+                @*@Html.ActionLink("Details", "Details", new { id = item.recognitionID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.recognitionID })*@
+            </td>
+        </tr>
+    }
 
 </table>
