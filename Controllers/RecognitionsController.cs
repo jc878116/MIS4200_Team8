@@ -46,7 +46,10 @@ namespace MIS4200_Team8.Controllers
         // GET: Recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.recognized = new SelectList(db.profile, "profileID", "fullName");
+            string profileID = User.Identity.GetUserId();
+            SelectList profiles = new SelectList(db.profile, "profileID", "fullName");
+            profiles = new SelectList(profiles.Where(x => x.Value != profileID).ToList(), "Value", "Text");
+            ViewBag.recognized = profiles;
             return View();
 
         }
@@ -68,7 +71,12 @@ namespace MIS4200_Team8.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.recognized = new SelectList(db.profile, "profileID", "fullName");
+            string profileID = User.Identity.GetUserId();
+            SelectList profiles = new SelectList(db.profile, "profileID", "fullName");
+            profiles = new SelectList(profiles.Where(x => x.Value != profileID).ToList(), "Value", "Text");
+            ViewBag.recognized = profiles;
+
+            //ViewBag.recognized = new SelectList(db.profile, "profileID", "fullName");
             return View(recognition);
         }
 
