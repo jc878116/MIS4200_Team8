@@ -37,9 +37,9 @@
         <th>
             Job Title
         </th>
-        @*<th>
+        <th>
             Total Recognitions
-        </th>*@
+        </th>
 
         <th></th>
     </tr>
@@ -61,12 +61,22 @@
     <td>
         @Html.DisplayFor(modelItem => item.jobTitleName)
     </td>
-    @*<td>
+    <td>
         @{ 
-            var totalRecognitions = item.recognition.Count();
+            var totalRecognitions = 0;
+            try
+            {
+                totalRecognitions = item.employeeGetting.Count();
+            }
+            catch (Exception)
+            {
+
+                // nothing to catch
+            }
+            
         }
         @totalRecognitions
-    </td>*@
+    </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.profileID }) |
         @Html.ActionLink("Details", "Details", new { id = item.profileID }) |

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -66,7 +67,11 @@ namespace MIS4200_Team8.Models
 
         //public int totalRecognitions { get; set; }
 
-        public ICollection<Recognition> recognition { get; set; }
+        [ForeignKey("recognizor")]
+        public ICollection<Recognition> employeeGiving { get; set; }
+
+        [ForeignKey("recognized")]
+        public ICollection<Recognition> employeeGetting { get; set; }
 
     }
 }
