@@ -64,6 +64,8 @@ namespace MIS4200_Team8.Models
                 CSuite=7
         }
 
+        //public int totalRecognitions { get; set; }
+
         public ICollection<Recognition> recognition { get; set; }
 
     }
