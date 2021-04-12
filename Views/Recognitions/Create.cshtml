@@ -1,10 +1,10 @@
 ﻿@model MIS4200_Team8.Models.Recognition
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create a Recognition";
 }
 
-<h2>Create</h2>
+<h2>Create a New Recognition</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Recognition</h4>
+
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
