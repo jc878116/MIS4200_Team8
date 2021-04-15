@@ -24,7 +24,7 @@ namespace MIS4200_Team8.Controllers
             var employeeSearch = db.profile.Include(e => e.employeeGetting).Include(e => e.employeeGiving);
             if (!String.IsNullOrEmpty(searchString))
             {
-                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString)); /*|| p.firstName.Contains(searchString);*/
+                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString) || p.firstName.Contains(searchString));
             }
 
             //var rec = db.recognition.Where(r => r.recognitionID == recognitionID);

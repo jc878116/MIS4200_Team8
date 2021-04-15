@@ -23,7 +23,7 @@ namespace MIS4200_Team8.Controllers
             var employeeSearch = from p in db.profile select p;
             if (!String.IsNullOrEmpty(searchString))
             {
-                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString)); /*|| p.firstName.Contains(searchString);*/
+                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString) || p.firstName.Contains(searchString));
             }
             return View(db.recognition.OrderByDescending(r=>r.recognitionDate).ToList());
         }
