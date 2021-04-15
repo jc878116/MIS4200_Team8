@@ -20,7 +20,8 @@ namespace MIS4200_Team8.Controllers
         [Authorize]
         public ActionResult Index(string searchString)
         {
-            var employeeSearch = from p in db.profile select p;
+            //var employeeSearch = from p in db.profile select p;
+            var employeeSearch = db.profile.Include(e => e.employeeGetting).Include(e => e.employeeGiving);
             if (!String.IsNullOrEmpty(searchString))
             {
                 employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString)); /*|| p.firstName.Contains(searchString);*/
