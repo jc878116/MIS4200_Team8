@@ -43,12 +43,13 @@ namespace MIS4200_Team8.Models
                 Louisville=9,
                 Miami=10,
                 Seattle=11,
+                [Display(Name = "St. Louis")]
                 StLouis=12,
                 Tampa=13
         }
 
         [Required(ErrorMessage = "A hire date is required")]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]  
         public DateTime hireDate { get; set; }
 
         
