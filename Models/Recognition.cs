@@ -35,10 +35,13 @@ namespace MIS4200_Team8.Models
         {
             Balance=1,
             Culture=2,
+            [Display(Name = "Delivery Excellence")]
             DeliveryExcellence=3,
-            GreaterGood=4,
+            [Display(Name = "Greater Good")]
+            GreaterGood =4,
             Innovation=5,
-            IntegrityAndOpenness=6,
+            [Display(Name = "Integrity and Openness")]
+            IntegrityAndOpenness =6,
             Stewardship=7
         }
                

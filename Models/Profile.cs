@@ -57,11 +57,14 @@ namespace MIS4200_Team8.Models
         public enum jobTitle
         {
                 Consultant=1,
+                [Display(Name = "Senior Consultant")]
                 SeniorConsultant=2,
                 Manager=3,
+                [Display(Name = "Senior Manager")]
                 SeniorManager=4,
                 Partner=5,
                 VP=6,
+                [Display(Name = "C Suite")]
                 CSuite=7
         }
 
