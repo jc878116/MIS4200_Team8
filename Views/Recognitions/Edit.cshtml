@@ -18,6 +18,7 @@
     @Html.HiddenFor(model => model.recognitionID)
 
     <div class="form-group">
+        @Html.HiddenFor(model => model.recognizor)
         @Html.LabelFor(model => model.award, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EnumDropDownListFor(model => model.award, htmlAttributes: new { @class = "form-control" })
@@ -27,7 +28,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.recognizor, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        <div class="col-md-10">            
             @Html.EditorFor(model => model.employeeGiving.fullName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.recognizor, "", new { @class = "text-danger" })
         </div>

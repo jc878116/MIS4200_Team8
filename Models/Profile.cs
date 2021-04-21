@@ -49,7 +49,8 @@ namespace MIS4200_Team8.Models
         }
 
         [Required(ErrorMessage = "A hire date is required")]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]  
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date)]
         public DateTime hireDate { get; set; }
 
         

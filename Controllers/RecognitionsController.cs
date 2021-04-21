@@ -20,8 +20,8 @@ namespace MIS4200_Team8.Controllers
         [Authorize]
         public ActionResult Index(string searchString)
         {
-            var employeeSearch = from p in db.profile select p;
-            //var employeeSearch = db.profile.Include(e => e.employeeGetting).Include(e => e.employeeGiving);
+            //var employeeSearch = from p in db.profile select p;
+            var employeeSearch = db.profile.Include(e => e.employeeGetting).Include(e => e.employeeGiving);
             if (!String.IsNullOrEmpty(searchString))
             {
                 employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString) || p.firstName.Contains(searchString));
@@ -85,10 +85,16 @@ namespace MIS4200_Team8.Controllers
         [Authorize]
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            //string profileID = User.Identity.GetUserId();
+            //SelectList profiles = new SelectList(db.profile, "profileID", "fullName");
+            //profiles = new SelectList(profiles.Where(x => x.Value != profileID).ToList(), "Value", "Text");
+
             Recognition recognition = db.recognition.Find(id);
             if (recognition == null)
             {
@@ -114,12 +120,18 @@ namespace MIS4200_Team8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "recognitionID,award,recognizor,recognized,recognitionDate,descritption")] Recognition recognition)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(recognition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            //string profileID = User.Identity.GetUserId();
+            //SelectList profiles = new SelectList(db.profile, "profileID", "fullName");
+            //profiles = new SelectList(profiles.Where(x => x.Value != profileID).ToList(), "Value", "Text");
+
             return View(recognition);
         }
 
@@ -135,6 +147,10 @@ namespace MIS4200_Team8.Controllers
             {
                 return HttpNotFound();
             }
+            //string profileID = User.Identity.GetUserId();
+            //SelectList profiles = new SelectList(db.profile, "profileID", "fullName");
+            //profiles = new SelectList(profiles.Where(x => x.Value != profileID).ToList(), "Value", "Text");
+
             return View(recognition);
         }
 
