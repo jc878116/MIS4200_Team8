@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<MIS4200_Team8.Models.Recognition>
 
 @{
-    ViewBag.Title = "Recognition List";
+    ViewBag.Title = "Recognitions List";
 }
 
-<h2>Recognition List</h2>
+<h2>10 Most Recent Recognitions</h2>
 
 @using (Html.BeginForm("Index", "Recognitions", FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("searchString")
+        Find by employee name receiving recognition : @Html.TextBox("searchString")
         <input type="submit" value="Search" />
     </p>
 
@@ -35,7 +35,7 @@
         <th>
             @Html.DisplayNameFor(model => model.descritption)
         </th>
-        <th></th>
+        @*<th></th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -56,11 +56,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.descritption)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.recognitionID })
+            @*<td>*@
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.recognitionID })*@
                 @*@Html.ActionLink("Details", "Details", new { id = item.recognitionID }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.recognitionID })*@
-            </td>
+            @*</td>*@
         </tr>
     }
 

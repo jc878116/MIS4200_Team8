@@ -26,13 +26,7 @@ namespace MIS4200_Team8.Controllers
             {
                 employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString) || p.firstName.Contains(searchString));
             }
-
-            //var rec = db.recognition.Where(r => r.recognitionID == recognitionID);
-
-            //var recList = rec.ToList();
-            //ViewBag.rec = recList;
-            //var totalCnt = recList.Count();
-
+               
             return View(employeeSearch.ToList());
         }
 

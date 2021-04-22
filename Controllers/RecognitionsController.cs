@@ -21,12 +21,14 @@ namespace MIS4200_Team8.Controllers
         public ActionResult Index(string searchString)
         {
             //var employeeSearch = from p in db.profile select p;
-            var employeeSearch = db.profile.Include(e => e.employeeGetting).Include(e => e.employeeGiving);
+            var recognitionSearch = db.recognition.Include(e => e.employeeGetting).Include(e => e.employeeGiving);
             if (!String.IsNullOrEmpty(searchString))
             {
-                employeeSearch = employeeSearch.Where(p => p.lastName.Contains(searchString) || p.firstName.Contains(searchString));
+                recognitionSearch = recognitionSearch.Where(p => p.employeeGetting.lastName.Contains(searchString) || p.employeeGetting.firstName.Contains(searchString));
             }
-            return View(db.recognition.OrderByDescending(r=>r.recognitionDate).ToList());
+            recognitionSearch = recognitionSearch.OrderByDescending(r => r.recognitionDate).Take(10);
+            return View(recognitionSearch.ToList());
+
         }
 
         // GET: Recognitions/Details/5
